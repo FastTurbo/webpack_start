@@ -17,3 +17,9 @@
     css样式分离：按照优化规则，js放在最后，把css分离出来，优化性能。
     extract-text-webpack-plugin：抽取文本插件，将css文件抽取出来。
     
+    webpack文件压缩：
+    
+    sourcemap定位js
+    
+    HMR 模块热替换
+    

@@ -3,8 +3,8 @@ export default (text='hello world,tianpf,is it?I can refresh by myself!',class1,
     element.innerText = text;
     element.className = class1;
 
-    const p = document.createElement('p');
-    p.innerText = 'p Line';
+    const p = document.createElement('input');
+    p.type = 'checkbox';
     p.className = class2;
     element.appendChild(p);
 

@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const BabiliWebpackPlugin = require('babili-webpack-plugin');
+const webpack = require('webpack');
 
 const PATHS = {
     app:path.join(__dirname,'app'),
@@ -14,19 +16,23 @@ const cssPlugin = new ExtractTextWebpackPlugin({
     })
 module.exports = {
     entry:{
-        app:PATHS.app
+        index:'./app/index.js',
+        about:'./app/about.js',
+        vendor:['react']
     },
     output:{
         path:PATHS.build,
         filename:'[name].js'
     },
+    devtool:'source-map',
     devServer:{
         host:process.env.HOST,
         port:9000,
         overlay:{
             errors:true,
             warnings:true
-        }
+        },
+        hotOnly:true
     },
     module:{
         rules:[
@@ -56,10 +62,14 @@ module.exports = {
         ]
     },
     plugins:[
-        new HtmlWebpackPlugin({
+        /*new HtmlWebpackPlugin({
             title:'Webpack demo'
+        }),*/
+        cssPlugin,
+        new BabiliWebpackPlugin(),
+        new webpack.optimize.CommonsChunkPlugin({
+            name:'vendor'
         }),
-        cssPlugin
-
+        new webpack.HotModuleReplacementPlugin()
     ]
 }
