@@ -21,5 +21,11 @@
     
     sourcemap定位js
     
-    HMR 模块热替换
+    HMR 模块热替换：
+    
+    webpack的module:
+    noParse//不去解析大型库文件
+    rules:解析规则
+    
+    context：改变上下文，一般是指定到根目录
     
