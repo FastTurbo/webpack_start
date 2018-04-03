@@ -27,5 +27,10 @@
     noParse//不去解析大型库文件
     rules:解析规则
     
-    context：改变上下文，一般是指定到根目录
+    context：改变入口文件上下文，一般是指定到根目录，独立于CWD
+    
+    CommonsChunkPlugin用于代码分离，适合将重复的代码提取出来
+    防止缓存就在output中使用[filename].[hashchunk].js来设定输出名字
+    NamedModulesPlugin用于在缓存情况下，没有修改的文件不会改变名字，推荐在开发环境中使用
+    HashedModuleIdsPlugin用于在生产环境中
     
